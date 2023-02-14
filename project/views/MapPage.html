@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTrip</title>
+    <link rel="stylesheet" href="../static/cssPage.css" />
+    <style>
+      h1 {
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript" src="./index.js"></script>
+  </head>
+  <body>
+    <h1>MyTrip</h1>
+
+    <div id="map" style="width: 100%; height: 100%"></div>
+
+    <button class="favorite styled" onclick="fillinfo()">Add new trip</button>
+    <a href="../views/LogIn.html">
+      <button class="favorite styled">Log Out</button>
+    </a>
+  </body>
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Un2aw3YY5ICina1CM3gtm9y1MyHasYg&callback=initMap"
+  ></script>
+</html>

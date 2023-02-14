@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MyTrip</title>
+    <link rel="stylesheet" href="../static/cssPage.css" />
+    <!--path-->
+    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+        var form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get the values from the form fields
+          var email = form.querySelector("input[type='email']").value;
+          var password = form.querySelector("input[type='password']").value;
+
+          saveUsername(email);
+          // Redirect to the MapPage and pass the values as URL parameters
+          window.location.href = "MapPage.html";
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <div class="form-field">
+        <input type="email" placeholder="Email / Username" required />
+        <!--UserName-->
+      </div>
+      <div class="form-field">
+        <input type="password" placeholder="Password" required />
+        <!--password-->
+      </div>
+      <div class="form-field">
+        <button class="btn" type="submit">Log In</button>
+        <!--login buttun-->
+      </div>
+    </form>
+  </body>
+</html>

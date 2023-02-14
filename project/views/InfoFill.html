@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyTrip</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script type="text/javascript" src="./index.js"></script>
+    <style>
+      html,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+
+    <script type="text/javascript">
+      // Extract username from URL and set it in the username field
+      // username is the first parameter in the URL
+
+      function loadPage() {
+        // if url has username, set it in the username field
+        // else if url has id (trip id), get the trip info from the database
+        // and set it in the fields
+
+        var url = window.location.href;
+        var key = url.split("?")[1].split("=")[0];
+        if (key == "username") {
+          var username = getUsername();
+          document.getElementById("username").value = username;
+        } else if (key == "id") {
+          var id = url.split("?")[1].split("=")[1];
+          if (id != null) {
+            // get trip info from database
+            getTripById(id);
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="w3-light-grey" onload="loadPage()">
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top" style="max-width: 1400px">
+      <!-- The Grid -->
+      <div class="w3-row-padding">
+        <!-- Left Column -->
+        <div class="w3-third">
+          <div class="w3-white w3-text-grey w3-card-4">
+            <div class="w3-display-container">
+              <div
+                class="w3-display-bottomleft w3-container w3-text-black"
+              ></div>
+            </div>
+            <div class="w3-container">
+              <p>
+                <i
+                  class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"
+                ></i
+                ><textarea name="w3review" rows="1" cols="15" id="destination">
+Destination</textarea
+                >
+              </p>
+              <p>
+                <i
+                  class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"
+                ></i
+                ><textarea name="w3review" rows="1" cols="15" id="hotel">
+Hotel</textarea
+                >
+              </p>
+              <p>
+                <i
+                  class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"
+                ></i
+                ><textarea name="w3review" rows="1" cols="15" id="username">
+Username</textarea
+                >
+              </p>
+              <p>
+                <i
+                  class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"
+                ></i
+                ><textarea name="w3review" rows="1" cols="15" id="lat">
+Latitude</textarea
+                >
+              </p>
+              <p>
+                <i
+                  class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"
+                ></i
+                ><textarea name="w3review" rows="1" cols="15" id="lng">
+Longtitue</textarea
+                >
+              </p>
+              <p>
+                <i
+                  class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"
+                ></i
+                ><textarea name="w3review" rows="1" cols="15" id="phoneNumber">
+Phone number</textarea
+                >
+              </p>
+              <hr />
+
+              <p class="w3-large">
+                <b
+                  ><i
+                    class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"
+                  ></i
+                  >Grades</b
+                >
+              </p>
+
+              <p>Night life</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="nightLife"
+                    name="temp"
+                    list="nightLifeOptions"
+                  />
+                  <datalist id="nightLifeOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <p>Landscapes</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="landscape"
+                    name="temp"
+                    list="landscapeOptions"
+                  />
+                  <datalist id="landscapeOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <p>Shopping</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="shopping"
+                    name="temp"
+                    list="shoppingOptions"
+                  />
+                  <datalist id="shoppingOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <p>Final grade</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="finalGrade"
+                    name="temp"
+                    list="finalGradeOptions"
+                  />
+                  <datalist id="finalGradeOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <br />
+
+              <p class="w3-large w3-text-theme">
+                <b
+                  ><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i
+                  >Languages</b
+                >
+              </p>
+
+              <p>English</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="english"
+                    name="temp"
+                    list="englishOptions"
+                  />
+                  <datalist id="englishOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <p>Hebrew</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="hebrew"
+                    name="temp"
+                    list="hebrewOptions"
+                  />
+                  <datalist id="hebrewOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <p>Else</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div
+                  class="w3-container w3-center w3-round-xlarge w3-teal"
+                  style="width: 100%"
+                >
+                  <input
+                    type="range"
+                    id="else"
+                    name="temp"
+                    list="elseOptions"
+                  />
+                  <datalist id="elseOptions">
+                    <option value="0" label="1"></option>
+                    <option value="25" label="2"></option>
+                    <option value="50" label="3"></option>
+                    <option value="75" label="4"></option>
+                    <option value="100" label="5"></option>
+                  </datalist>
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+          <br />
+          <!-- End Left Column -->
+        </div>
+
+        <!-- Right Column -->
+        <div class="w3-twothird">
+          <div class="w3-container w3-card w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey w3-padding-16">
+              <i
+                class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"
+              ></i
+              >MyTrip
+            </h2>
+            <div class="w3-container">
+              <h5 class="w3-opacity">
+                <b> Dates</b>
+              </h5>
+              <h6 class="w3-text-teal">
+                <i class="fa fa-calendar fa-fw w3-margin-right"></i>
+              </h6>
+              <form action="/action_page.php">
+                <textarea name="w3review" rows="1" cols="30" id="dates">
+Fill dates</textarea
+                >
+
+                <textarea
+                  name="w3review"
+                  rows="2"
+                  cols="40"
+                  id="recommendations"
+                >
+Recommendation on dates and seasons</textarea
+                >
+              </form>
+
+              <hr />
+            </div>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>Description</b></h5>
+              <textarea name="w3review" rows="2" cols="40" id="description">
+A short paragraph summarizing the destination you traveled</textarea
+              >
+              <hr />
+            </div>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>TOP 3</b></h5>
+              <textarea name="w3review" rows="2" cols="40" id="top3">
+The three most recommended attractions in the destination where you traveled: </textarea
+              >
+            </div>
+          </div>
+          <!-- End Right Column -->
+        </div>
+
+        <!-- End Grid -->
+      </div>
+
+      <!-- End Page Container -->
+    </div>
+
+    <footer class="w3-container w3-teal w3-center w3-margin-top">
+      <p>Traveling. Documenting. Sharing.</p>
+      <a href="../views/MapPage.html">
+        <button class="">cancel</button>
+      </a>
+      <button class="" onclick="addTrip()">save</button>
+      <!-- STILL DONT HAVE DATA BASE -->
+
+      <p>Powered by Yali Ben-Ari</p>
+    </footer>
+  </body>
+</html>
